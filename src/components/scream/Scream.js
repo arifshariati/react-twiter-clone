@@ -29,13 +29,13 @@ const styles = {
     card:{
         position: 'relative',
         display:"flex",
-        marginBottom:20,
+        marginBottom:'1rem',
     },
     image:{
-        minWidth:200,
+        minWidth:150,
     },
     content:{
-        padding:25,
+        padding:'1rem',
         objectFit:'cover'
     }
 }

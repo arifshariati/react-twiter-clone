@@ -16,13 +16,34 @@ const reducers = combineReducers({
     UI: uiReducer
 });
 
+const getComposeEnhancer = ()=>{
+
+    if(window.navigator.userAgent.includes('Chrome')){
+
+        return compose(
+            applyMiddleware(...middleware),
+            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+        );
+    }
+
+    return compose(
+        applyMiddleware(...middleware)
+    );
+}
+
 const store = createStore(
+    reducers,
+    initialState,
+    getComposeEnhancer()
+);
+
+/* const store = createStore(
     reducers, 
     initialState, 
     compose(
         applyMiddleware(...middleware),
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
         )
-    );
+    ); */
 
 export default store;
